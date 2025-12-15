@@ -93,15 +93,15 @@ class RivaTTS(AutoTTS):
         self.volume = validate(voice_volume, self.volume, str)
         self.buffering = validate(tts_buffering, self.buffering, str)
 
-    def state_dict(self):
+    def state_dict(self, config=False, connections=False, hidden=False, **kwargs):
         return {
-            **super().state_dict(),
+            **super().state_dict(config=config, connections=connections, hidden=hidden, **kwargs),
             'voice': self.voice,
             'voice_rate': self.rate,
             'voice_pitch': self.pitch,
             'voice_volume': self.volume,
             'tts_buffering': self.buffering,
-       }
+        }
        
     def process(self, text, **kwargs):
         """

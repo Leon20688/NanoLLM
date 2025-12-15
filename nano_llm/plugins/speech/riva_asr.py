@@ -103,11 +103,11 @@ class RivaASR(AutoASR):
         """   
         self.confidence_threshold = validate(asr_threshold, self.confidence_threshold, float)
 
-    def state_dict(self):
+     def state_dict(self, config=False, connections=False, hidden=False, **kwargs):
         return {
-            **super().state_dict(),
+            **super().state_dict(config=config, connections=connections, hidden=hidden, **kwargs),
             'asr_confidence': self.confidence_threshold,
-       }
+        }
        
     def run(self):
         if self.input_device is not None:
